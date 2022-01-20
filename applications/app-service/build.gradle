@@ -1,0 +1,19 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+	implementation project( ':event-subscriptions')
+	implementation project( ':rest-subs-service')
+	implementation project( ':notification-sender')
+	implementation project( ':dynamodb-fallback')
+	implementation project( ':reactive-web')
+	implementation project( ':async-event-bus')
+    implementation project(':model')
+    implementation project(':usecase')
+    implementation 'org.springframework.boot:spring-boot-starter'
+    runtimeOnly('org.springframework.boot:spring-boot-devtools')
+}
+
+task explodedJar(type: Copy) {
+    with jar
+    into "${buildDir}/exploded"
+}
