@@ -17,3 +17,9 @@ app:
     withDLQRetry: true
     retryDelay: 5000
     maxRetries: 3
+
+application:
+  dynamo:
+    customer-table-name: "demo-customer-info"
+    region: "us-west-2"
+    endpoint: "http://localhost:8000"

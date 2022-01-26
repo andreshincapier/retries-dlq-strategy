@@ -28,9 +28,8 @@ public class ListenersConfig {
     public HandlerRegistry handleEventSubscriptions() {
         return register()
             .handleCommand(Subscription.COMMAND_NAME, this::handleSubscription, Subscription.class)
-            .listenEvent(Subscription.COMMAND_NAME + ".dlq", this::handleDiscard,
-                Subscription.class);
-//            .listenEvent("event.notification", this::sendNotification, String.class);
+            .listenEvent(Subscription.COMMAND_NAME + ".dlq", this::handleDiscard, Subscription.class)
+            .listenEvent("event.notification", this::sendNotification, String.class);
     }
 
     private Mono<Void> sendNotification(DomainEvent<String> message) {
