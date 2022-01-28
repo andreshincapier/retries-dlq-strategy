@@ -1,5 +1,6 @@
 package co.com.andreshincapier.eventsubscriptions;
 
+import static java.util.logging.Level.INFO;
 import static org.reactivecommons.async.api.HandlerRegistry.register;
 
 import co.com.andreshincapier.model.events.gateways.Subscription;
@@ -7,6 +8,7 @@ import co.com.andreshincapier.usecase.AsyncSubscriptionsUseCase;
 import co.com.andreshincapier.usecase.DiscardSubscriptionUseCase;
 import co.com.andreshincapier.usecase.NotificationUseCase;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.reactivecommons.api.domain.Command;
 import org.reactivecommons.api.domain.DomainEvent;
 import org.reactivecommons.async.api.HandlerRegistry;
@@ -15,6 +17,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import reactor.core.publisher.Mono;
 
+@Log
 @EnableCommandListeners
 @Configuration
 @RequiredArgsConstructor
@@ -41,6 +44,7 @@ public class ListenersConfig {
     }
 
     private Mono<Void> handleDiscard(DomainEvent<Subscription> subsEvent) {
+        log.log(INFO, "ListenersConfig::handleDiscard {0}", subsEvent.toString());
         return discardSubscriptionUseCase.notifyDiscard(subsEvent.getData());
     }
 

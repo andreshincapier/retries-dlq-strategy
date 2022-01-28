@@ -11,6 +11,7 @@ public class DiscardSubscriptionUseCase {
     private final DiscardGateway discardGateway;
 
     public Mono<Void> notifyDiscard(Subscription subscription) {
-        return discardGateway.discardSubscription(subscription);
+        return discardGateway.discardSubscription(subscription)
+            .then();
     }
 }

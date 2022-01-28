@@ -15,9 +15,9 @@ public class APISubscription implements SubscriptionGateway {
     @Override
     public Mono<Void> subscribeEnterpriseAsync(Subscription subscription) {
         //Simulate HTTP request
-        log.log(INFO, "APISubscription::subscribeEnterpriseAsync {0}", subscription.toString());
+        //return Mono.error(new Error("Sorry the service has been fail !!!"));
 
+        log.log(INFO, "APISubscription::subscribeEnterpriseAsync {0}", subscription.toString());
         return Mono.empty();
-//        return Mono.error(new Error("Sorry the service has been fail !!!"));
     }
 }

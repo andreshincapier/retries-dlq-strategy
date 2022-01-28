@@ -4,6 +4,5 @@ import reactor.core.publisher.Mono;
 
 public interface DiscardGateway {
 
-    Mono<Void> discardSubscription(Subscription subscription);
-
+    Mono<String> discardSubscription(Subscription subscription);
 }
